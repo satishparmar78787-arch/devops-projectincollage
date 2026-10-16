@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Automated CI/CD pipeline using Docker, Kubernetes, Terraform and Monitoring on AWS - B.Tech Project-I, BTU Bikaner">
+  <title>DevOps CI/CD Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand"><span class="dot"></span>DevOps<span class="accent">Pipeline</span></a>
+      <ul class="nav-links">
+        <li><a href="#status">Status</a></li>
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><a href="#stack">Tech Stack</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container">
+      <span class="badge">B.Tech Project-I &bull; 7CS7-50</span>
+      <h1>Automated <span class="gradient">CI/CD Pipeline</span><br>on AWS</h1>
+      <p class="lead">Every code push is automatically tested, containerized, security-scanned and deployed to Kubernetes, with live monitoring.</p>
+      <div class="hero-actions">
+        <a href="#pipeline" class="btn primary">View Pipeline</a>
+        <a href="#architecture" class="btn ghost">Architecture</a>
+      </div>
+      <div class="live-pill"><span class="pulse" id="pulse"></span><span id="heroStatus">Checking server...</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="status">
+      <div class="container">
+        <h2 class="title">Live Deployment Status</h2>
+        <div class="grid stats">
+          <div class="stat"><span class="label">Version</span><span class="value" id="version">-</span></div>
+          <div class="stat"><span class="label">Server Status</span><span class="value" id="status-text">Checking...</span></div>
+          <div class="stat"><span class="label">Response Time</span><span class="value" id="latency">-</span></div>
+          <div class="stat"><span class="label">Build Date</span><span class="value" id="build">-</span></div>
+          <div class="stat"><span class="label">Environment</span><span class="value" id="env">-</span></div>
+          <div class="stat"><span class="label">Page Loaded</span><span class="value" id="time">-</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="pipeline">
+      <div class="container">
+        <h2 class="title">CI/CD Pipeline</h2>
+        <p class="sub">From <code>git push</code> to production in minutes, with zero manual steps.</p>
+        <ol class="timeline">
+          <li><span class="num">1</span><div><h3>Code Push</h3><p>Developer pushes code to GitHub. The workflow triggers automatically.</p></div></li>
+          <li><span class="num">2</span><div><h3>Build &amp; Test</h3><p>GitHub Actions checks the code and builds the Docker image.</p></div></li>
+          <li><span class="num">3</span><div><h3>Security Scan</h3><p>Trivy scans the image for known vulnerabilities.</p></div></li>
+          <li><span class="num">4</span><div><h3>Push to Registry</h3><p>The tagged image is pushed to Docker Hub.</p></div></li>
+          <li><span class="num">5</span><div><h3>Deploy</h3><p>Kubernetes (k3s) on AWS EC2 rolls out the new version with no downtime.</p></div></li>
+          <li><span class="num">6</span><div><h3>Monitor</h3><p>Prometheus and Grafana track CPU, memory and pod health.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="stack">
+      <div class="container">
+        <h2 class="title">Tech Stack</h2>
+        <div class="grid cards">
+          <div class="card"><div class="icon">🐙</div><h3>GitHub Actions</h3><p>CI/CD automation</p></div>
+          <div class="card"><div class="icon">🐳</div><h3>Docker</h3><p>Containerization</p></div>
+          <div class="card"><div class="icon">☸️</div><h3>Kubernetes</h3><p>Orchestration (k3s)</p></div>
+          <div class="card"><div class="icon">🏗️</div><h3>Terraform</h3><p>Infrastructure as Code</p></div>
+          <div class="card"><div class="icon">🛡️</div><h3>Trivy</h3><p>Vulnerability scanning</p></div>
+          <div class="card"><div class="icon">📊</div><h3>Prometheus + Grafana</h3><p>Monitoring and dashboards</p></div>
+          <div class="card"><div class="icon">☁️</div><h3>AWS EC2</h3><p>Cloud hosting</p></div>
+          <div class="card"><div class="icon">🌐</div><h3>Nginx</h3><p>Web server</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="architecture">
+      <div class="container">
+        <h2 class="title">Architecture</h2>
+        <div class="arch">
+          <div class="node">Developer</div><span class="arrow">&rarr;</span>
+          <div class="node">GitHub</div><span class="arrow">&rarr;</span>
+          <div class="node">GitHub Actions</div><span class="arrow">&rarr;</span>
+          <div class="node">Docker Hub</div><span class="arrow">&rarr;</span>
+          <div class="node hl">AWS EC2<br><small>k3s + Nginx</small></div><span class="arrow">&rarr;</span>
+          <div class="node">Grafana</div>
+        </div>
+        <p class="note">Infrastructure (EC2, Security Group) is created and destroyed with Terraform.</p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about">
+        <h2 class="title">About the Project</h2>
+        <p>This project demonstrates a complete DevOps workflow built as part of B.Tech Computer Science and Engineering, VII Semester, at Bikaner Technical University. It removes manual deployment, reduces errors and speeds up delivery.</p>
+        <div class="grid stats small">
+          <div class="stat"><span class="label">Student</span><span class="value">YOUR NAME</span></div>
+          <div class="stat"><span class="label">Guide</span><span class="value">Vikram Sir</span></div>
+          <div class="stat"><span class="label">University</span><span class="value">BTU Bikaner</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 YOUR NAME &bull; B.Tech CSE Project-I &bull; Bikaner Technical University</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
