@@ -34,3 +34,16 @@ jobs:
         run: |
           docker push $IMAGE:${{ github.sha }}
           docker push $IMAGE:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to AWS server
+        env:
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+          HOST: ${{ secrets.EC2_HOST }}
+        run: |
+          printf '%s\n' "$SSH_KEY" > key.pem
+          chmod 600 key.pem
+          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@$HOST "docker pull $IMAGE:${{ github.sha }} && (docker rm -f web || true) && docker run -d --name web --restart always -p 80:80 $IMAGE:${{ github.sha }}"
